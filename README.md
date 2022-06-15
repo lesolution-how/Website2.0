@@ -1,3 +1,3 @@
-# JuliaTutorialsTemplate
+# Website2.0
 
-See <http://rikhuijzer.github.io/JuliaTutorialsTemplate/> for more information.
+See <http://lesoltion-how.github.io/Website2.0/> for more information.
