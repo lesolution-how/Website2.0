@@ -1,6 +1,17 @@
 ### A Pluto.jl notebook ###
 # v0.19.8
 
+# ╔═╡ 56e9db72-7ec8-11ec-2b5e-458367c3b8b7
+# hideall
+title = "Website2.0";
+
+# ╔═╡ 061c6a60-7a8f-48ac-8c3c-8306d4d0c3ee
+"""
++++
+title = "$title"
++++
+""" |> Base.Text
+
 using Markdown
 using InteractiveUtils
 
