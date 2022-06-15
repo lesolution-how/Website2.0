@@ -73,7 +73,7 @@ end
 # ╔═╡ 0719887e-3649-4393-afdc-9eb7b1b67340
 @htl("""
 <head>
-$(production ? @htl("""<link rel="stylesheet" href="_css/main.css">""") : @htl("<script src=\"https://cdn.tailwindcss.com\"></script>"))
+$(production ? @htl("""<link rel="stylesheet" href="../css/main.css">""") : @htl("<script src=\"https://cdn.tailwindcss.com\"></script>"))
 <title>W3.CSS Template</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
