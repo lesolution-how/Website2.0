@@ -19,7 +19,7 @@ title = "$title"
 """ |> Base.Text
 
 # ╔═╡ d8aeb1d5-7552-492b-bd49-549351e2d375
-production = get(ENV, "PRODUCTION", false)
+production = "PRODUCTION" in keys(ENV) ? true : false
 
 # ╔═╡ 4ece3bcf-874a-4732-9fcd-fe5a69522400
 project(title, image="/w3images/house5.jpg") = @htl("""
@@ -31,6 +31,32 @@ project(title, image="/w3images/house5.jpg") = @htl("""
 	</div>
 """)
 
+# ╔═╡ 5184f113-8594-4a58-917b-357c201cdcb8
+solutionist(name, spruch, pic_url) = @htl("""
+
+<figure class="md:flex bg-slate-100 rounded-xl p-8 md:p-0 dark:bg-slate-800">
+  <img class="w-24 h-24 md:w-48 md:h-auto md:rounded-none rounded-full mx-auto" src="$(pic_url)" alt="" width="384" height="512">
+  <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
+    <blockquote>
+      <p class="text-lg font-medium">
+        “$(spruch)”
+      </p>
+    </blockquote>
+    <figcaption class="font-medium">
+      <div class="text-sky-500 dark:text-sky-400">
+		$(name)
+      </div>
+      <div class="text-slate-700 dark:text-slate-500">
+        Solutionist
+      </div>
+    </figcaption>
+  </div>
+</figure>
+""")
+
+# ╔═╡ 511d2d31-9590-499b-94ca-d72136bef8a7
+(solutionist("noe", "nie frd fans", "https://static.wikia.nocookie.net/kingdom-hearts/images/3/32/Track_BBS.png/revision/latest?cb=20130503231240&path-prefix=de"))
+
 # ╔═╡ 82fc1283-5a0c-43e9-8f4e-b558a494fd9a
 some_cool_projects = [
 	"Kränländ",
@@ -39,7 +65,6 @@ some_cool_projects = [
 	"Wordle Guesser",
 	"Sunny Coffee",
 	"D'Charte lüge nie"
-	
 ]
 
 # ╔═╡ 47bf7c19-b90e-4928-956a-e444075bc565
@@ -73,7 +98,7 @@ end
 # ╔═╡ 0719887e-3649-4393-afdc-9eb7b1b67340
 @htl("""
 <head>
-$(production ? @htl("""<link rel="stylesheet" href="../css/main.css">""") : @htl("<script src=\"https://cdn.tailwindcss.com\"></script>"))
+$(production ? @htl("""<link rel="stylesheet" href="/css/main.css">""") : @htl("<script src=\"https://cdn.tailwindcss.com\"></script>"))
 <title>W3.CSS Template</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -126,14 +151,9 @@ $(embed_display(solu))
     <p> the bois mitte fiese projects
     </p>
   </div>
+   $(solutionist("noe", "nie frd fans", "https://static.wikia.nocookie.net/kingdom-hearts/images/3/32/Track_BBS.png/revision/latest?cb=20130503231240&path-prefix=de"))
 
   <div class="w3-row-padding w3-grayscale">
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      $(embed_display(noe))
-      <h3>le Noe</h3>
-      <p class="w3-opacity">Solutionist</p>
-      <p>nie fürd fans.</p>
-    </div>
     <div class="w3-col l3 m6 w3-margin-bottom">
       $(embed_display(tinu))
       <h3>le Tinu</h3>
@@ -393,9 +413,11 @@ uuid = "3f19e933-33d8-53b3-aaab-bd5110c3b7a0"
 # ╠═99be43de-abc1-49af-8a6b-cd3da5dcf931
 # ╟─72a77c59-b55d-4543-bbce-e4b11c6d85d4
 # ╟─dcbe0593-9561-4ad0-b1e1-5a68789e3958
-# ╟─0719887e-3649-4393-afdc-9eb7b1b67340
+# ╠═0719887e-3649-4393-afdc-9eb7b1b67340
 # ╠═d8aeb1d5-7552-492b-bd49-549351e2d375
 # ╠═4ece3bcf-874a-4732-9fcd-fe5a69522400
+# ╠═5184f113-8594-4a58-917b-357c201cdcb8
+# ╠═511d2d31-9590-499b-94ca-d72136bef8a7
 # ╠═82fc1283-5a0c-43e9-8f4e-b558a494fd9a
 # ╠═47bf7c19-b90e-4928-956a-e444075bc565
 # ╠═3bdb4962-edaa-432f-bfb3-ad0235521832
