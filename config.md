@@ -9,7 +9,7 @@ mintoclevel = 2
 ignore = ["node_modules/"]
 
 prepath = ""
-production = get(ENV, "PRODUCTION", false)
+production = "PRODUCTION" in keys(ENV) ? true : false
 
 # RSS (the website_{title, descr, url} must be defined to get RSS)
 generate_rss = false
