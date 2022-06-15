@@ -19,7 +19,7 @@ title = "$title"
 """ |> Base.Text
 
 # ╔═╡ d8aeb1d5-7552-492b-bd49-549351e2d375
-production = "PRODUCTION" in keys(ENV) ? true : false
+production = get(ENV, "PRODUCTION", false)
 
 # ╔═╡ 4ece3bcf-874a-4732-9fcd-fe5a69522400
 project(title, image="/w3images/house5.jpg") = @htl("""
@@ -390,11 +390,11 @@ uuid = "3f19e933-33d8-53b3-aaab-bd5110c3b7a0"
 """
 
 # ╔═╡ Cell order:
-# ╟─99be43de-abc1-49af-8a6b-cd3da5dcf931
+# ╠═99be43de-abc1-49af-8a6b-cd3da5dcf931
 # ╟─72a77c59-b55d-4543-bbce-e4b11c6d85d4
-# ╠═dcbe0593-9561-4ad0-b1e1-5a68789e3958
+# ╟─dcbe0593-9561-4ad0-b1e1-5a68789e3958
+# ╟─0719887e-3649-4393-afdc-9eb7b1b67340
 # ╠═d8aeb1d5-7552-492b-bd49-549351e2d375
-# ╠═0719887e-3649-4393-afdc-9eb7b1b67340
 # ╠═4ece3bcf-874a-4732-9fcd-fe5a69522400
 # ╠═82fc1283-5a0c-43e9-8f4e-b558a494fd9a
 # ╠═47bf7c19-b90e-4928-956a-e444075bc565
