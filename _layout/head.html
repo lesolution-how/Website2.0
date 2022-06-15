@@ -12,7 +12,11 @@
       src: url("/Website2.0/{{artifact JuliaMono juliamono-0.044 webfonts JuliaMono-Regular.woff2}}");
     }
     </style>
-
+  {{if production}}
+<link rel="stylesheet" href="/css/main.css"> 
+  {{else}}
+<script src="https://cdn.tailwindcss.com"></script> 
+  {{end}}
   <link rel="stylesheet" href="/css/spectre.min.css">
   <link rel="stylesheet" href="/css/spectre-exp.min.css">
   <link rel="stylesheet" href="/css/spectre-icons.min.css">
