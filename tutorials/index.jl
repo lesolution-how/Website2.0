@@ -1,121 +1,176 @@
 ### A Pluto.jl notebook ###
-# v0.18.4
+# v0.19.8
 
 using Markdown
 using InteractiveUtils
 
-# ╔═╡ d7967150-5a59-4199-83ad-4e79476c0d44
-using PlutoUI: with_terminal
+# ╔═╡ dcbe0593-9561-4ad0-b1e1-5a68789e3958
+using PlutoUI, HypertextLiteral
 
-# ╔═╡ 1a45c71a-4204-461b-8f85-61d9a79f8cf8
-using BenchmarkTools
-
-# ╔═╡ bdacad08-a9b1-11ec-1013-45393b4e19c9
+# ╔═╡ 99be43de-abc1-49af-8a6b-cd3da5dcf931
 # hideall
-title = "Benchmarking";
+title = "My title";
 
-# ╔═╡ 031e949e-e784-4d9d-b767-0a3e2d29d3a2
+# ╔═╡ 72a77c59-b55d-4543-bbce-e4b11c6d85d4
 """
 +++
 title = "$title"
 +++
 """ |> Base.Text
 
-# ╔═╡ 8a859941-0f2d-45fb-b56b-a3f58f97a36a
-md"""
-# $title
+# ╔═╡ 4ece3bcf-874a-4732-9fcd-fe5a69522400
+project(title, image="/w3images/house5.jpg") = @htl("""
+	<div class="w3-col l3 m6 w3-margin-bottom">
+    <div class="w3-display-container">
+		<div class="w3-display-topleft w3-black w3-padding">$(title)</div>
+			<img src="/w3images/house5.jpg" alt="House" style="width:100%">
+		</div>
+	</div>
+""")
 
-This notebook shows some `@benchmark` and `@code_warntype` output.
-Both outputs are shown via the `with_terminal` from [PlutoUI.jl](https://github.com/JuliaPluto/PlutoUI.jl), see below.
+# ╔═╡ 82fc1283-5a0c-43e9-8f4e-b558a494fd9a
+some_cool_projects = [
+	"Kränländ",
+	"Diper.pics",
+	"Dinimer.fans",
+	"Wordle Guesser",
+	"Sunny Coffee",
+	"D'Charte lüge nie"
+	
+]
 
-We define some function `double` and a dictionary of numbers in order to show type inference problems via `@code_warntype`:
-"""
-
-# ╔═╡ 90cb7685-09fc-4f2a-88c9-64fada9e50d0
-numbers = Dict(:one => 1f0, :two => 2.0)
-
-# ╔═╡ 3f0e2049-8597-4dac-b499-4d7a8a35978e
-function double(mapping, key::Symbol)
-    return 2 * mapping[key]
-end;
-
-# ╔═╡ faef1ae5-eeac-4e23-ba75-23ae2f1ca629
-md"""
-Now, the code works.
-"""
-
-# ╔═╡ a3c923e5-2873-48a2-ad0f-0087585136a7
-double(numbers, :one)
-
-# ╔═╡ a16c4a67-8666-4dc5-b100-4c2c7c51f981
-double(numbers, :two)
-
-# ╔═╡ 187e21bc-db38-48c9-97cd-7894685e1b43
-md"""
-But the `@code_warntype` shows some big red warnings:
-"""
-
-# ╔═╡ a3b4bcc6-4aa1-48b2-b598-0613794beab2
-with_terminal() do
-    @code_warntype double(numbers, :one)
+# ╔═╡ 47bf7c19-b90e-4928-956a-e444075bc565
+solu = let
+	url = "https://i.pinimg.com/originals/69/df/6c/69df6c7427f672402edcbaef9870a90c.png"
+	data = read(download(url))
+	PlutoUI.Show(MIME"image/jpg"(), data)
 end
 
-# ╔═╡ 8c147812-f0e7-4b14-9082-3ac4d5f07000
-md"""
-We can fix this by forcing all elements in the dictionary to have the same type.
-Specifically, to we force all elements to be of type `Float64`:
-"""
-
-# ╔═╡ 0f78717a-ccbd-4af1-a150-adcce25cddb4
-typednumbers = Dict{Symbol, Float64}(:one => 1f0, :two => 2.0)
-
-# ╔═╡ 48d6f2fa-04e8-475c-92b6-43418f6a2c6c
-md"""
-This gets rid of all the type warnings:
-"""
-
-# ╔═╡ c678d759-9a68-439e-9cb3-3cfe94088794
-with_terminal() do
-    @code_warntype double(typednumbers, :one)
+# ╔═╡ 3bdb4962-edaa-432f-bfb3-ad0235521832
+noe = let
+	url = "https://static.wikia.nocookie.net/kingdom-hearts/images/3/32/Track_BBS.png/revision/latest?cb=20130503231240&path-prefix=de"
+	data = read(download(url))
+	PlutoUI.Show(MIME"image/jpg"(), data)
 end
 
-# ╔═╡ 3cf79c82-9d43-41d3-b968-e2d283bc32ea
-md"""
-And makes the method more quick:
-"""
-
-# ╔═╡ b52f7449-aed4-4eba-905f-3c078fba4f3f
-md"""
-## Appendix
-"""
-
-# ╔═╡ 064395ff-2cc6-4be1-a6f0-0c3ccefdf8ce
-function with_benchmark_terminal(f)
-    out = sprint(show, "text/plain", f())
-    with_terminal() do
-        print(out)
-    end
-end;
-
-# ╔═╡ bc815bd5-1f5e-4641-81f4-80e0306398bf
-with_benchmark_terminal() do
-    @benchmark double(numbers, :one)
+# ╔═╡ b8e84022-ed34-4358-b31c-481f79f78bc4
+tinu = let
+	url = "https://static.wikia.nocookie.net/kingdom-hearts/images/4/46/Trick_BBS.png/revision/latest?cb=20130503231241&path-prefix=de"
+	data = read(download(url))
+	PlutoUI.Show(MIME"image/jpg"(), data)
 end
 
-# ╔═╡ b8f4d737-4647-47f1-8c45-c3ed30994e1f
-with_benchmark_terminal() do
-    @benchmark double(typednumbers, :one)
+# ╔═╡ 6349dd84-36e9-4807-853e-d7325da7e459
+sam = let
+	url = "https://static.wikia.nocookie.net/kingdom-hearts/images/7/79/Tick_BBS.png/revision/latest?cb=20130503231240&path-prefix=de"
+	data = read(download(url))
+	PlutoUI.Show(MIME"image/jpg"(), data)
 end
+
+# ╔═╡ 0719887e-3649-4393-afdc-9eb7b1b67340
+@htl("""
+<head>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+
+$(embed_display(solu))
+
+<!-- Header -->
+<header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
+  <div class="w3-display-middle w3-margin-top w3-center">
+    <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>le</b></span> <span class="w3-hide-small w3-text-light-grey">Solution</span></h1>
+  </div>
+</header>
+
+<!-- Page content -->
+<div class="w3-content w3-padding" style="max-width:1564px">
+
+  <!-- Project Section -->
+  <div class="w3-container w3-padding-32" id="projects">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Projects</h3>
+  </div>
+	<div class="w3-row-padding">
+		$([
+		project(item)
+			
+		for item in some_cool_projects])
+	</div>
+	$([ @htl("""
+	  	<div class="w3-row-padding">
+			$([@htl("""
+			<div class="w3-col l3 m6 w3-margin-bottom">
+      			<div class="w3-display-container">
+        		<div class="w3-display-topleft w3-black w3-padding">$(item)</div>
+        			<img src="/w3images/house5.jpg" alt="House" style="width:100%">
+      			</div>
+    		</div>
+			""")
+			# elements per row = 4
+			for item in some_cool_projects[i+(i-1)*4:min(length(some_cool_projects),i*4)]
+			])
+		</div>
+	""") for i in 1:2])
+
+
+  <!-- About Section -->
+  <div class="w3-container w3-padding-32" id="about">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">About</h3>
+    <p> the bois mitte fiese projects
+    </p>
+  </div>
+
+  <div class="w3-row-padding w3-grayscale">
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      $(embed_display(noe))
+      <h3>le Noe</h3>
+      <p class="w3-opacity">Solutionist</p>
+      <p>nie fürd fans.</p>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      $(embed_display(tinu))
+      <h3>le Tinu</h3>
+      <p class="w3-opacity">Solutionist</p>
+      <p>Schönä...</p>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      $(embed_display(sam))
+      <h3>le Säm</h3>
+      <p class="w3-opacity">Solutionist</p>
+      <p>Zieh nä!</p>
+    </div>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <div class="w3-container w3-padding-32" id="contact">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Contact</h3>
+    <p>Chum cho lütä, aues angere wird ignoriert</p>
+    <form action="/action_page.php" target="_blank">
+      <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+      <input class="w3-input w3-section w3-border" type="text" placeholder="Email" required name="Email">
+      <button class="w3-button w3-black w3-section" type="submit">
+        <i class="fa fa-paper-plane"></i> SEND MESSAGE
+      </button>
+    </form>
+  </div>
+</body>
+</html>
+"""
+)
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
-BenchmarkTools = "6e4b80f9-dd63-53aa-95a3-0cdb28fa8baf"
+HypertextLiteral = "ac1192a8-f4b3-4bfe-ba22-af5b92cd3ab2"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 
 [compat]
-BenchmarkTools = "~1.3.1"
-PlutoUI = "~0.7.37"
+HypertextLiteral = "~0.9.4"
+PlutoUI = "~0.7.39"
 """
 
 # ╔═╡ 00000000-0000-0000-0000-000000000002
@@ -140,17 +195,11 @@ uuid = "56f22d72-fd6d-98f1-02f0-08ddc0907c33"
 [[deps.Base64]]
 uuid = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
 
-[[deps.BenchmarkTools]]
-deps = ["JSON", "Logging", "Printf", "Profile", "Statistics", "UUIDs"]
-git-tree-sha1 = "4c10eee4af024676200bc7752e536f858c6b8f93"
-uuid = "6e4b80f9-dd63-53aa-95a3-0cdb28fa8baf"
-version = "1.3.1"
-
 [[deps.ColorTypes]]
 deps = ["FixedPointNumbers", "Random"]
-git-tree-sha1 = "024fe24d83e4a5bf5fc80501a314ce0d1aa35597"
+git-tree-sha1 = "eb7f0f8307f71fac7c606984ea5fb2817275d6e4"
 uuid = "3da002f7-5984-5a60-b8a6-cbb66c0b333f"
-version = "0.11.0"
+version = "0.11.4"
 
 [[deps.CompilerSupportLibraries_jll]]
 deps = ["Artifacts", "Libdl"]
@@ -177,9 +226,10 @@ uuid = "47d2ed2b-36de-50cf-bf87-49c2cf4b8b91"
 version = "0.0.4"
 
 [[deps.HypertextLiteral]]
-git-tree-sha1 = "2b078b5a615c6c0396c77810d92ee8c6f470d238"
+deps = ["Tricks"]
+git-tree-sha1 = "c47c5fa4c5308f27ccaac35504858d8914e102f9"
 uuid = "ac1192a8-f4b3-4bfe-ba22-af5b92cd3ab2"
-version = "0.9.3"
+version = "0.9.4"
 
 [[deps.IOCapture]]
 deps = ["Logging", "Random"]
@@ -246,9 +296,9 @@ uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
 
 [[deps.Parsers]]
 deps = ["Dates"]
-git-tree-sha1 = "85b5da0fa43588c75bb1ff986493443f821c70b7"
+git-tree-sha1 = "0044b23da09b5608b4ecacb4e5e6c6332f833a7e"
 uuid = "69de0a69-1ddd-5017-9359-2bf0b02dc9f0"
-version = "2.2.3"
+version = "2.3.2"
 
 [[deps.Pkg]]
 deps = ["Artifacts", "Dates", "Downloads", "LibGit2", "Libdl", "Logging", "Markdown", "Printf", "REPL", "Random", "SHA", "Serialization", "TOML", "Tar", "UUIDs", "p7zip_jll"]
@@ -256,17 +306,13 @@ uuid = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
 
 [[deps.PlutoUI]]
 deps = ["AbstractPlutoDingetjes", "Base64", "ColorTypes", "Dates", "Hyperscript", "HypertextLiteral", "IOCapture", "InteractiveUtils", "JSON", "Logging", "Markdown", "Random", "Reexport", "UUIDs"]
-git-tree-sha1 = "bf0a1121af131d9974241ba53f601211e9303a9e"
+git-tree-sha1 = "8d1f54886b9037091edf146b517989fc4a09efec"
 uuid = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
-version = "0.7.37"
+version = "0.7.39"
 
 [[deps.Printf]]
 deps = ["Unicode"]
 uuid = "de0858da-6303-5e67-8744-51eddeeeb8d7"
-
-[[deps.Profile]]
-deps = ["Printf"]
-uuid = "9abbd945-dff8-562f-b5e8-e1ebf5ef1b79"
 
 [[deps.REPL]]
 deps = ["InteractiveUtils", "Markdown", "Sockets", "Unicode"]
@@ -310,6 +356,11 @@ uuid = "a4e569a6-e804-4fa4-b0f3-eef7a1d5b13e"
 deps = ["InteractiveUtils", "Logging", "Random", "Serialization"]
 uuid = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
+[[deps.Tricks]]
+git-tree-sha1 = "6bac775f2d42a611cdfcd1fb217ee719630c4175"
+uuid = "410a4b4d-49e4-4fbc-ab6d-cb71b17b3775"
+version = "0.1.6"
+
 [[deps.UUIDs]]
 deps = ["Random", "SHA"]
 uuid = "cf7118a7-6976-5b1a-9a39-7adc72f591a4"
@@ -335,26 +386,15 @@ uuid = "3f19e933-33d8-53b3-aaab-bd5110c3b7a0"
 """
 
 # ╔═╡ Cell order:
-# ╠═bdacad08-a9b1-11ec-1013-45393b4e19c9
-# ╠═031e949e-e784-4d9d-b767-0a3e2d29d3a2
-# ╠═8a859941-0f2d-45fb-b56b-a3f58f97a36a
-# ╠═90cb7685-09fc-4f2a-88c9-64fada9e50d0
-# ╠═3f0e2049-8597-4dac-b499-4d7a8a35978e
-# ╠═faef1ae5-eeac-4e23-ba75-23ae2f1ca629
-# ╠═a3c923e5-2873-48a2-ad0f-0087585136a7
-# ╠═a16c4a67-8666-4dc5-b100-4c2c7c51f981
-# ╠═187e21bc-db38-48c9-97cd-7894685e1b43
-# ╠═d7967150-5a59-4199-83ad-4e79476c0d44
-# ╠═a3b4bcc6-4aa1-48b2-b598-0613794beab2
-# ╠═8c147812-f0e7-4b14-9082-3ac4d5f07000
-# ╠═0f78717a-ccbd-4af1-a150-adcce25cddb4
-# ╠═48d6f2fa-04e8-475c-92b6-43418f6a2c6c
-# ╠═c678d759-9a68-439e-9cb3-3cfe94088794
-# ╠═3cf79c82-9d43-41d3-b968-e2d283bc32ea
-# ╠═1a45c71a-4204-461b-8f85-61d9a79f8cf8
-# ╠═bc815bd5-1f5e-4641-81f4-80e0306398bf
-# ╠═b8f4d737-4647-47f1-8c45-c3ed30994e1f
-# ╠═b52f7449-aed4-4eba-905f-3c078fba4f3f
-# ╠═064395ff-2cc6-4be1-a6f0-0c3ccefdf8ce
+# ╟─99be43de-abc1-49af-8a6b-cd3da5dcf931
+# ╟─72a77c59-b55d-4543-bbce-e4b11c6d85d4
+# ╠═dcbe0593-9561-4ad0-b1e1-5a68789e3958
+# ╠═0719887e-3649-4393-afdc-9eb7b1b67340
+# ╠═4ece3bcf-874a-4732-9fcd-fe5a69522400
+# ╠═82fc1283-5a0c-43e9-8f4e-b558a494fd9a
+# ╠═47bf7c19-b90e-4928-956a-e444075bc565
+# ╠═3bdb4962-edaa-432f-bfb3-ad0235521832
+# ╠═b8e84022-ed34-4358-b31c-481f79f78bc4
+# ╠═6349dd84-36e9-4807-853e-d7325da7e459
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
