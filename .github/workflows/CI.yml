@@ -25,9 +25,13 @@ jobs:
     - uses: julia-actions/cache@v1
     - uses: julia-actions/julia-buildpkg@v1
 
+    - name: Build CSS
+      run: npx tailwindcss -i _css/main.css -o _css/main.css
+
     - name: Build notebooks
       run: julia --project -e 'using Tutorials; build_tutorials()'
       env:
+        PRODUCTION: yes 
         JULIA_NUM_THREADS: '2'
         DISABLE_CACHE: '${{ github.event.inputs.disableCache }}'
         REPO: '${{ github.repository }}'
