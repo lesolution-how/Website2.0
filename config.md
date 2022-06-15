@@ -15,6 +15,7 @@ production = get(ENV, "PRODUCTION", false)
 generate_rss = false
 website_title = "Website2.0"
 website_descr = "Example website containing Julia tutorials"
-website_url   = "https://lesoltion-how.github.io/Website2.0/"
+website_url   = "https://website2.0.lesolution.how"
+
 +++
 
