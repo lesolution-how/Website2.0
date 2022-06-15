@@ -7,6 +7,17 @@ using InteractiveUtils
 # ╔═╡ c412ffa0-eb3b-11ec-2088-ddbc7d748fd9
 using PlutoUI, HypertextLiteral
 
+# ╔═╡ f43553db-3de3-40be-a4de-8cbbe701afed
+# hideall
+title = "My title";
+
+# ╔═╡ bb0967ad-7bb3-492e-9438-673071162831
+"""
++++
+title = "$title"
++++
+""" |> Base.Text
+
 # ╔═╡ 18380ca0-ba75-4f59-bab5-3337a1cb6fb4
 solu = let
 	url = "https://i.pinimg.com/originals/69/df/6c/69df6c7427f672402edcbaef9870a90c.png"
@@ -387,6 +398,8 @@ uuid = "3f19e933-33d8-53b3-aaab-bd5110c3b7a0"
 
 # ╔═╡ Cell order:
 # ╠═c412ffa0-eb3b-11ec-2088-ddbc7d748fd9
+# ╟─f43553db-3de3-40be-a4de-8cbbe701afed
+# ╟─bb0967ad-7bb3-492e-9438-673071162831
 # ╠═553c6c8e-628a-4244-a22f-33c94c746b70
 # ╠═18380ca0-ba75-4f59-bab5-3337a1cb6fb4
 # ╠═e21629f2-238e-495b-a773-f0d447dc2fed
