@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+<url>
+    <loc>https://website2.0.lesolution.how/getting-started/index.html</loc>
+    <lastmod>2022-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://website2.0.lesolution.how/tutorials/notebook/index.html</loc>
+    <lastmod>2022-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://website2.0.lesolution.how/index.html</loc>
+    <lastmod>2022-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://website2.0.lesolution.how/404/index.html</loc>
+    <lastmod>2022-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://website2.0.lesolution.how/tutorials/index.html</loc>
+    <lastmod>2022-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://website2.0.lesolution.how/craft/index.html</loc>
+    <lastmod>2022-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+</urlset>

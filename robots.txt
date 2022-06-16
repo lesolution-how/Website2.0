@@ -1,0 +1,4 @@
+Sitemap: https://website2.0.lesolution.how/sitemap.xml
+
+User-agent: *
+Disallow:
